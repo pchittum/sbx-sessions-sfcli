@@ -1,3 +1,4 @@
+/* eslint-disable sf-plugin/no-missing-messages */
 import { SfCommand, Flags } from '@salesforce/sf-plugins-core';
 import { Messages } from '@salesforce/core';
 
@@ -16,8 +17,15 @@ export default class Userpic extends SfCommand<UserpicResult> {
   public static readonly flags = {
     'target-org': Flags.requiredOrg(),
     'target-user': Flags.string({
+      char: 'u',
       summary: messages.getMessage('flags.target-user.summary'),
+      description: messages.getMessage('flags.target-user.description'),
       required: true,
+    }),
+    'api-version': Flags.orgApiVersion({
+      char: 'a',
+      summary: messages.getMessage('flags.api-version.summary'),
+      description: messages.getMessage('flags.api-version.description'),
     }),
   };
 
@@ -25,7 +33,7 @@ export default class Userpic extends SfCommand<UserpicResult> {
     const { flags } = await this.parse(Userpic);
 
     const myOrg = flags['target-org'];
-    const connection = myOrg.getConnection([flags.api - version]);
+    const connection = myOrg.getConnection(flags['api-version']);
     const targetUser = flags['target-user'];
     // const targetUser = flags['target-user'] ?? 'world';
 

@@ -10,9 +10,17 @@ Every user has a profile pic. This utility retrieves the URL for the profile pic
 
 Salesforce user name.
 
-# flags.target-user.summary
+# flags.target-user.description
 
 This is always in the format of an email address, but might not be a real email address.
+
+# flags.api-version.summary
+
+Target API version for the deploy.
+
+# flags.api-version.description
+
+Use this flag to override the default API version with the API version of your package.xml file. The default API version is the latest version supported by the CLI.
 
 # examples
 
